@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/layout/static/css/main.06f6a891.css",
-    "main.js": "/layout/static/js/main.d803736c.js",
-    "static/js/453.670e15c7.chunk.js": "/layout/static/js/453.670e15c7.chunk.js",
-    "index.html": "/layout/index.html",
-    "main.06f6a891.css.map": "/layout/static/css/main.06f6a891.css.map",
-    "main.d803736c.js.map": "/layout/static/js/main.d803736c.js.map",
-    "453.670e15c7.chunk.js.map": "/layout/static/js/453.670e15c7.chunk.js.map"
+    "main.css": "/waldenor-site/static/css/main.9d508c80.css",
+    "main.js": "/waldenor-site/static/js/main.72471fe8.js",
+    "static/js/453.670e15c7.chunk.js": "/waldenor-site/static/js/453.670e15c7.chunk.js",
+    "index.html": "/waldenor-site/index.html",
+    "main.9d508c80.css.map": "/waldenor-site/static/css/main.9d508c80.css.map",
+    "main.72471fe8.js.map": "/waldenor-site/static/js/main.72471fe8.js.map",
+    "453.670e15c7.chunk.js.map": "/waldenor-site/static/js/453.670e15c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.06f6a891.css",
-    "static/js/main.d803736c.js"
+    "static/css/main.9d508c80.css",
+    "static/js/main.72471fe8.js"
   ]
 }

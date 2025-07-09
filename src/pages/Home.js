@@ -1,391 +1,190 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import styles from './Home.module.css';
 
-const sliderItems = [
-  {
-    id: 1,
-    tipo: "Artigo",
-    titulo: "Investimentos em Educação",
-    resumo: "Conheça as ações para melhorar o ensino público e garantir acesso a todos.",
-  },
-  {
-    id: 2,
-    tipo: "Notícia",
-    titulo: "Waldenor participa de audiência pública",
-    resumo: "Debates importantes sobre infraestrutura e desenvolvimento sustentável na Bahia.",
-  },
-  {
-    id: 3,
-    tipo: "Release",
-    titulo: "Novo programa social lançado",
-    resumo: "Confira os detalhes do programa que visa apoiar famílias vulneráveis.",
-  },
-];
+// Importe os ícones que você usa (certifique-se de ter instalado: npm install react-icons)
+import { FaGraduationCap, FaHandsHelping, FaBalanceScale, FaChartLine, FaEnvelope, FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-const destaqueItems = [
-  {
-    title: "Projetos Aprovados",
-    number: 25,
-    description: "Projetos que beneficiaram a educação e saúde",
-    icon: "📜",
-  },
-  {
-    title: "Visitas Comunitárias",
-    number: 80,
-    description: "Encontros e reuniões com a população",
-    icon: "🤝",
-  },
-  {
-    title: "Leis Propostas",
-    number: 15,
-    description: "Leis focadas em direitos sociais e econômicos",
-    icon: "⚖️",
-  },
-];
-
-const eventos = [
-  {
-    ano: "1990s",
-    descricao: "Ingressa como professor da UESB e inicia militância política.",
-    icon: "🎓",
-  },
-  {
-    ano: "2003–2010",
-    descricao: "Reitor da Universidade Estadual do Sudoeste da Bahia (UESB).",
-    icon: "🏛️",
-  },
-  {
-    ano: "2011–presente",
-    descricao: "Eleito deputado federal, destacando-se em pautas sociais e educacionais.",
-    icon: "📋",
-  },
-  {
-    ano: "2020",
-    descricao: "Referência em defesa da democracia e dos serviços públicos no Congresso.",
-    icon: "🛡️",
-  },
-];
 
 export default function Home() {
-  const [current, setCurrent] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Dados dos slides do carrossel
+  const slides = [
+    {
+      type: "Educação",
+      title: "Investimento em Universidades",
+      summary: "Waldenor Pereira destinou recursos significativos para a expansão e melhoria das universidades federais e estaduais da Bahia, garantindo acesso e qualidade no ensino superior.",
+      image: "/images/educacao.jpg"
+    },
+    {
+      type: "Agricultura Familiar",
+      title: "Apoio ao Homem do Campo",
+      summary: "Fortalecimento da agricultura familiar com programas de incentivo, acesso a crédito e assistência técnica, promovendo desenvolvimento rural sustentável na Bahia.",
+      image: "/images/Walnews_1.png"
+    },
+    {
+      type: "Infraestrutura",
+      title: "Obras e Desenvolvimento",
+      summary: "Atuação fundamental na viabilização de obras de infraestrutura que transformaram diversas cidades baianas, melhorando a qualidade de vida da população.",
+      image: "/images/Walobras_2.png"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  // Efeito para trocar de slide automaticamente
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % sliderItems.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+    const slideInterval = setInterval(() => {
+      nextSlide();
+    }, 8000); // Muda de slide a cada 8 segundos
+
+    return () => clearInterval(slideInterval); // Limpa o intervalo ao desmontar o componente
+  }, [currentSlide]); // Dependência para reiniciar o intervalo quando o slide muda
+
 
   return (
-    <main style={{ fontFamily: "'Montserrat', sans-serif", color: "#1a1a1a" }}>
-      {/*slider destaque*/}
-      <section
-        style={{
-          maxWidth: 1200,
-          margin: "4rem auto",
-          padding: "0 2rem",
-          borderRadius: 12,
-          boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-          backgroundColor: "#fff0f0",
-        }}
-      >
-        <div style={{ padding: "2rem 3rem", minHeight: 220 }}>
-          {sliderItems.map((item, index) => (
-            <article
-              key={item.id}
-              style={{ display: current === index ? "block" : "none" }}
-            >
-              <span
-                style={{
-                  fontWeight: "bold",
-                  color: "#a30000",
-                  textTransform: "uppercase",
-                }}
-              >
-                {item.tipo}
-              </span>
-              <h2 style={{ fontSize: 28, margin: "0.5rem 0", color: "#1a1a1a" }}>
-                {item.titulo}
-              </h2>
-              <p style={{ fontSize: 18, color: "#333" }}>{item.resumo}</p>
-            </article>
-          ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 10,
-            paddingBottom: "1rem",
-          }}
-        >
-          {sliderItems.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrent(idx)}
-              style={{
-                width: 12,
-                height: 12,
-                borderRadius: "50%",
-                border: "none",
-                backgroundColor: current === idx ? "#a30000" : "#ccc",
-                cursor: "pointer",
-              }}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/*bio*/}
-      <section
-        style={{
-          maxWidth: 1100,
-          margin: "4rem auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "3rem 2rem",
-          backgroundColor: "#fff",
-          boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
-          borderRadius: 12,
-          textAlign: "center",
-        }}
-      >
+    <main className={styles.main}>
+      {/* Hero Banner - Imagem de destaque */}
+      <section className={styles.heroBanner}>
         <img
-          src="/images/waldenor.jpg"
-          alt="Waldenor"
-          style={{
-            width: 200,
-            borderRadius: "50%",
-            marginBottom: "1.5rem",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-          }}
+          src="/images/Panel_3.png" // Sua imagem principal do banner
+          alt="Waldenor Pereira Deputado Federal"
+          className={styles.heroFullWidthImage}
         />
-        <h2 style={{ fontSize: 32, color: "#a30000", marginBottom: "1rem" }}>
-          Waldenor Pereira
-        </h2>
-        <p
-          style={{
-            fontSize: 18,
-            color: "#444",
-            lineHeight: 1.6,
-            maxWidth: 800,
-          }}
-        >
-          Economista, professor universitário e deputado federal baiano. Waldenor atua firmemente
-          na defesa da educação pública, da democracia e das políticas sociais que promovem dignidade
-          ao povo. Sua trajetória é marcada pela luta por justiça, direitos e progresso para todos.
-        </p>
       </section>
 
-    {/*linhado tempo*/}
-<section
-  style={{
-    maxWidth: 1000,
-    margin: "4rem auto",
-    padding: "2rem 1rem",
-    backgroundColor: "#fdf0f0",
-    borderRadius: 12,
-    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-    userSelect: "none",
-  }}
->
-  <h2
-    style={{
-      textAlign: "center",
-      fontSize: 28,
-      color: "#730000",
-      marginBottom: "2rem",
-    }}
-  >
-    Linha do Tempo
-  </h2>
-
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      position: "relative",
-      padding: "0 20px",
-    }}
-  >
-    {/*linha da linha do tempo*/}
-    <div
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: 20,
-        right: 20,
-        height: 4,
-        backgroundColor: "#a30000",
-        borderRadius: 2,
-        zIndex: 0,
-      }}
-    />
-
-    {eventos.map(({ ano, descricao, icon }, i) => (
-      <div
-        key={ano}
-        style={{
-          backgroundColor: "#fff",
-          borderRadius: 12,
-          boxShadow: "0 2px 8px rgba(163, 0, 0, 0.15)",
-          padding: "1rem",
-          textAlign: "center",
-          flex: 1,
-          maxWidth: 200,
-          position: "relative",
-          zIndex: 1,
-          margin: "0 8px",
-        }}
-      >
-        <div
-          style={{
-            fontSize: 40,
-            color: "#a30000",
-            marginBottom: "0.5rem",
-          }}
-          aria-label={`Ícone representando o evento de ${ano}`}
-        >
-          {icon}
-        </div>
-        <div
-          style={{
-            fontWeight: "bold",
-            fontSize: 18,
-            color: "#730000",
-            marginBottom: 6,
-          }}
-        >
-          {ano}
-        </div>
-        <p style={{ fontSize: 14, color: "#444", lineHeight: 1.4 }}>
-          {descricao}
-        </p>
-
-        
-        <div
-        />
-      </div>
-    ))}
-  </div>
-</section>
-
-
-      {/*destques*/}
-      <section
-        style={{
-          padding: "2rem",
-          background: "#fff0f0",
-          borderRadius: 12,
-          margin: "4rem auto",
-          maxWidth: 900,
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "2rem",
-            color: "#730000",
-          }}
-        >
-          Destaques do Mandato
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-            flexWrap: "wrap",
-          }}
-        >
-          {destaqueItems.map(({ title, number, description, icon }) => (
-            <div
-              key={title}
-              style={{
-                background: "white",
-                padding: "1.5rem",
-                borderRadius: 10,
-                width: 250,
-                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                textAlign: "center",
-              }}
+      {/* Carrossel de Destaques */}
+      <section className={styles.sliderSection}>
+        <div className={styles.contentWrapper}> {/* Wrapper interno para centralizar conteúdo */}
+            {slides.map((slide, index) => (
+            <article
+                key={index}
+                className={`${styles.sliderArticle} ${
+                index === currentSlide ? styles.sliderArticleActive : ""
+                }`}
+                style={{ display: index === currentSlide ? "block" : "none" }} // Controla a visibilidade
             >
-              <div style={{ fontSize: 40 }}>{icon}</div>
-              <h3 style={{ marginTop: 12, color: "#a30000" }}>{title}</h3>
-              <p
-                style={{
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                  margin: "8px 0",
-                  color: "#730000",
-                }}
-              >
-                {number}
-              </p>
-              <p style={{ color: "#555" }}>{description}</p>
-            </div>
-          ))}
+                <img src={slide.image} alt={slide.title} className={styles.sliderImage} />
+                <p className={styles.sliderType}>{slide.type}</p>
+                <h3 className={styles.sliderTitle}>{slide.title}</h3>
+                <p className={styles.sliderSummary}>{slide.summary}</p>
+            </article>
+            ))}
+            <button onClick={prevSlide} className={`${styles.navButton} ${styles.prevButton}`}>
+            <IoIosArrowBack />
+            </button>
+            <button onClick={nextSlide} className={`${styles.navButton} ${styles.nextButton}`}>
+            <IoIosArrowForward />
+            </button>
         </div>
       </section>
 
-      {/*ctts*/}
-      <section
-        style={{
-          background: "#fce5e5",
-          textAlign: "center",
-          padding: "3rem 1rem",
-          marginTop: "4rem",
-        }}
-      >
-        <h2 style={{ fontSize: 28, color: "#730000", marginBottom: "1rem" }}>
-          Fale com o mandato
-        </h2>
-        <p style={{ color: "#333", fontSize: 18, marginBottom: "2rem" }}>
-          Estamos à disposição para ouvir você. Entre em contato com nossa equipe:
-        </p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-            flexWrap: "wrap",
-          }}
-        >
-          <a
-            href="mailto:waldenor@email.com"
-            style={{
-              background: "#a30000",
-              color: "#fff",
-              padding: "0.8rem 2rem",
-              borderRadius: 6,
-              textDecoration: "none",
-              fontWeight: 600,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-              transition: "all 0.3s",
-            }}
-          >
-            ✉️ Enviar E-mail
-          </a>
-          <a
-            href="https://www.instagram.com/waldenor/"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              background: "#a30000",
-              color: "#fff",
-              padding: "0.8rem 2rem",
-              borderRadius: 6,
-              textDecoration: "none",
-              fontWeight: 600,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-              transition: "all 0.3s",
-            }}
-          >
-            📸 Instagram
-          </a>
+     {/* Seção Minha História (Bio) */}
+      <section className={styles.bioSection}>
+        <div className={styles.contentWrapper}>
+          <div className={styles.bioHeadingContainer}>
+            <h2 className={styles.bioSectionTitle}>Minha História</h2>
+          </div>
+          {/* Nova estrutura para imagem e texto */}
+          <img src={"/images/bio12.png"} alt="Waldenor Pereira" className={styles.bioFullImage} />
+          <h3 className={styles.bioName}>Waldenor Pereira</h3>
+          <p className={styles.bioDescription}>
+            É economista, professor universitário e deputado federal pela Bahia, filiado ao Partido dos Trabalhadores (PT). Natural de Caculé, iniciou sua militância ainda jovem, no movimento estudantil, e foi um dos fundadores da CUT e do PT em Vitória da Conquista. Possui uma sólida trajetória acadêmica, tendo atuado como professor, pró-reitor e reitor da Universidade Estadual do Sudoeste da Bahia (UESB).
+          </p>
+          <p className={styles.bioDescription}>
+            Na política, foi deputado estadual por dois mandatos e está em seu quarto mandato como deputado federal. É reconhecido por sua atuação na defesa da educação pública, da agricultura familiar e por destinar recursos para obras e serviços em diversas cidades baianas. Waldenor também se destaca pela participação ativa em comissões da Câmara dos Deputados, sendo um dos parlamentares mais bem avaliados do estado.
+          </p>
         </div>
       </section>
+
+      {/* Linha do Tempo (Exemplo de Seção com Ícones) */}
+      <section className={styles.timelineSection}>
+        <div className={styles.contentWrapper}> {/* Wrapper interno para centralizar conteúdo */}
+            <h2 className={styles.timelineHeading}>Minha Trajetória</h2>
+            <div className={styles.timelineContainer}>
+            <div className={styles.timelineLine}></div> {/* Linha decorativa */}
+            <div className={styles.timelineItem}>
+                <FaGraduationCap className={styles.timelineIcon} />
+                <p className={styles.timelineYear}>1980s</p>
+                <p className={styles.timelineDescription}>Início da vida acadêmica e militância estudantil.</p>
+            </div>
+            <div className={styles.timelineItem}>
+                <FaHandsHelping className={styles.timelineIcon} />
+                <p className={styles.timelineYear}>1990s</p>
+                <p className={styles.timelineDescription}>Fundação da CUT e PT em Vitória da Conquista.</p>
+            </div>
+            <div className={styles.timelineItem}>
+                <FaBalanceScale className={styles.timelineIcon} />
+                <p className={styles.timelineYear}>2000s</p>
+                <p className={styles.timelineDescription}>Atuação como Reitor da UESB e Deputado Estadual.</p>
+            </div>
+            <div className={styles.timelineItem}>
+                <FaChartLine className={styles.timelineIcon} />
+                <p className={styles.timelineYear}>2010s</p>
+                <p className={styles.timelineDescription}>Eleito Deputado Federal, foco em desenvolvimento.</p>
+            </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Destaques do Mandato */}
+      <section className={styles.highlightsSection}>
+        <div className={styles.contentWrapper}> {/* Wrapper interno para centralizar conteúdo */}
+            <h2 className={styles.highlightsHeading}>Destaques do Mandato</h2>
+            <div className={styles.highlightsGrid}>
+            <div className={styles.highlightCard}>
+                <FaGraduationCap className={styles.highlightIcon} />
+                <h3 className={styles.highlightTitle}>Recursos para Educação</h3>
+                <p className={styles.highlightNumber}>+R$50M</p>
+                <p className={styles.highlightDescription}>Destinados para universidades e escolas na Bahia.</p>
+            </div>
+            <div className={styles.highlightCard}>
+                <FaHandsHelping className={styles.highlightIcon} />
+                <h3 className={styles.highlightTitle}>Apoio Social</h3>
+                <p className={styles.highlightNumber}>+100</p>
+                <p className={styles.highlightDescription}>Projetos e programas de inclusão social apoiados.</p>
+            </div>
+            <div className={styles.highlightCard}>
+                <FaBalanceScale className={styles.highlightIcon} />
+                <h3 className={styles.highlightTitle}>Leis Aprovadas</h3>
+                <p className={styles.highlightNumber}>15</p>
+                <p className={styles.highlightDescription}>Projetos de lei de sua autoria aprovados.</p>
+            </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Seção de Contato */}
+      <section className={styles.contactSection}>
+        <div className={styles.contentWrapper}> {/* Wrapper interno para centralizar conteúdo */}
+            <h2 className={styles.contactHeading}>Entre em Contato</h2>
+            <p className={styles.contactText}>
+            Fale diretamente com o deputado Waldenor Pereira e sua equipe.
+            Sua participação é fundamental para construirmos um futuro melhor para a Bahia.
+            </p>
+            <div className={styles.contactLinks}>
+            <a href="mailto:contato@waldenorpt.com.br" className={styles.contactButton}>
+                <FaEnvelope /> Email
+            </a>
+            <a href="https://wa.me/5577999999999" target="_blank" rel="noopener noreferrer" className={styles.contactButton}>
+                <FaWhatsapp /> WhatsApp
+            </a>
+            <a href="https://www.instagram.com/waldenor/" target="_blank" rel="noopener noreferrer" className={styles.contactButton}>
+                <FaInstagram /> Instagram
+            </a>
+            </div>
+        </div>
+      </section>
+
+      {/* Você pode adicionar um componente Footer aqui se tiver um */}
+      {/* <Footer /> */}
     </main>
   );
 }

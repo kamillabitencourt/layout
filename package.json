@@ -2,9 +2,11 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kamillabitencourt.github.io/layout/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -16,7 +18,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [
@@ -37,8 +38,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
-    "homepage": "https://kamillabitencourt.github.io/waldenor-site"
-
+    "gh-pages": "^6.3.0"
   }
 }

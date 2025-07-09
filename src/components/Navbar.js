@@ -4,7 +4,7 @@ import "./Navbar.css";
 export default function Navbar() {
     return (
         <nav className="navbar">
-        <div className="logo">Waldenor PT</div>
+        <div className="logo">Waldenor Pereira</div>
         <ul className="nav-links">
             <li><Link to="/">Início</Link></li>
             <li><Link to="/fotografias">Fotografias</Link></li>

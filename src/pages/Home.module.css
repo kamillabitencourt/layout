@@ -1,0 +1,625 @@
+/* Estilos globais e variáveis */
+:root {
+  --primary-red: #a30000;
+  --darker-red: #730000;
+  --light-red-background: #f8f0f0;
+  --lighter-red-background: #fffafa; /* Cor de fundo suave para Destaques e Contato */
+  --text-dark: #222;
+  --text-medium: #444;
+  --text-light: #555;
+  --text-bio: #333;
+  --white: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-red: rgba(163, 0, 0, 0.1);
+  --shadow-red-strong: rgba(163, 0, 0, 0.3);
+  --highlight-bio-name: var(--primary-red); /* Cor para destacar o nome */
+}
+
+.main {
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Garante que não haja barra de rolagem horizontal indesejada */
+}
+
+/* Base para todas as seções, sem largura máxima aqui */
+.sectionContainer {
+  margin: 3rem 0; /* Apenas margem superior e inferior, sem margens laterais automáticas */
+  padding: 0; /* Padding lateral será tratado pelo contentWrapper */
+  border-radius: 0; /* Removendo border-radius para ir até as bordas */
+  box-shadow: none; /* Removendo sombra, pois a sombra fica estranha em tela cheia sem um fundo fixo */
+}
+
+/* Wrapper interno para limitar a largura do conteúdo textual e centralizar */
+.contentWrapper {
+  max-width: 900px; /* Limita a largura do conteúdo interno para melhor leitura */
+  margin: 0 auto; /* Centraliza o conteúdo interno */
+  padding: 0 20px; /* Adiciona um padding interno para não colar nas bordas */
+}
+
+.heroBanner {
+  background-color: var(--primary-red);
+  position: relative;
+  padding: 0;
+  min-height: 450px;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); /* Truque para ocupar 100% da largura da viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroFullWidthImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* CARROSSEL */
+.sliderSection {
+  composes: sectionContainer; /* Hereda as propriedades base */
+  background-color: var(--light-red-background);
+  overflow: hidden;
+  position: relative;
+  box-shadow: none;
+}
+
+.sliderArticle {
+  padding: 1rem 1.5rem 2rem; /* Este padding é interno ao slide, pode manter */
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.sliderArticleActive {
+  opacity: 1;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 15px var(--shadow-light);
+}
+
+.sliderType {
+  font-weight: 700;
+  color: var(--primary-red);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 0.9rem;
+}
+
+.sliderTitle {
+  font-size: 2rem;
+  margin: 0.75rem 0 0.5rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.sliderSummary {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(163, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  font-size: 28px;
+  opacity: 0.85;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.navButton:hover {
+  background-color: var(--darker-red);
+  opacity: 1;
+}
+
+.prevButton {
+  left: 20px;
+}
+
+.nextButton {
+  right: 20px;
+}
+
+/* BIO - SEÇÃO (AJUSTES PARA LAYOUT PROFISSIONAL) */
+.bioSection {
+  composes: sectionContainer; /* Hereda as propriedades base */
+  background-color: var(--white);
+  box-shadow: none;
+  text-align: center; /* Centraliza todo o conteúdo da seção */
+}
+
+.bioSection .contentWrapper {
+  padding: 4rem 20px; /* Aumenta um pouco o padding vertical para mais respiro */
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  max-width: 900px; /* Mantém a largura máxima do conteúdo */
+  margin: 0 auto;
+}
+
+.bioHeadingContainer {
+  margin-bottom: 3rem; /* Mais espaço abaixo do título */
+}
+
+.bioSectionTitle {
+  font-size: 2.5rem; /* Aumenta o tamanho do título */
+  color: var(--darker-red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bioFullImage {
+  width: 300px; /* Largura da imagem retangular */
+  height: 400px; /* Altura da imagem retangular */
+  border-radius: 12px; /* Cantos levemente arredondados */
+  object-fit: cover; /* Preenche o espaço, cortando se necessário, sem distorcer */
+  flex-shrink: 0;
+  /* Sombra mais suave e profissional, sem borda */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ajustada para ser mais sutil */
+  margin-bottom: 2.5rem;
+  border: none; /* Garante que não haja borda */
+}
+
+.bioName {
+  font-size: 2.8rem; /* Tamanho maior para o nome */
+  font-weight: 800; /* Mais negrito */
+  color: var(--darker-red);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.bioSubtitle {
+  font-size: 1.4rem; /* Subtítulo mais proeminente */
+  color: var(--text-medium);
+  margin-bottom: 2.5rem; /* Espaço antes do texto descritivo */
+  line-height: 1.5;
+}
+
+.bioDescription {
+  color: var(--text-bio);
+  font-weight: 400;
+  font-size: 1.15rem; /* Aumenta um pouco a fonte do texto */
+  line-height: 1.9; /* Maior espaçamento entre as linhas para melhor leitura */
+  margin-bottom: 1.5rem; /* Espaço entre os parágrafos */
+  max-width: 700px; /* Limita a largura do texto para evitar linhas muito longas */
+  text-align: justify; /* Justifica o texto para um visual mais formal */
+}
+.bioDescription:last-child {
+  margin-bottom: 0;
+}
+
+/* LINHA DO TEMPO */
+.timelineSection {
+  composes: sectionContainer;
+  background-color: var(--light-red-background);
+  box-shadow: none;
+}
+
+.timelineSection .contentWrapper {
+  padding: 2.5rem 20px; /* Padding vertical para a seção em desktop */
+  text-align: center; /* Centraliza o heading */
+}
+
+.timelineHeading {
+  text-align: center; /* Mantido para garantir centralização */
+  font-size: 2.2rem;
+  color: var(--darker-red);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+.timelineContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 50px;
+  left: 5%;
+  right: 5%;
+  height: 4px;
+  background-color: var(--primary-red);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.timelineItem {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  padding: 1.5rem;
+  text-align: center;
+  flex: 1;
+  max-width: 200px;
+  min-width: 160px;
+  position: relative;
+  z-index: 1;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.timelineItem:hover {
+  transform: translateY(-5px);
+}
+
+.timelineIcon {
+  font-size: 44px;
+  color: var(--primary-red);
+  margin-bottom: 0.75rem;
+}
+
+.timelineYear {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--darker-red);
+  margin-bottom: 0.5rem;
+}
+
+.timelineDescription {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+/* DESTAQUES DO MANDATO (AJUSTES PARA LAYOUT PROFISSIONAL) */
+.highlightsSection {
+  composes: sectionContainer;
+  background-color: var(--lighter-red-background); /* Usando a variável de cor unificada */
+  box-shadow: none;
+  text-align: center;
+}
+
+.highlightsSection .contentWrapper {
+  padding: 3rem 20px; /* Ajusta padding vertical para mais respiro */
+  text-align: center;
+}
+
+.highlightsHeading {
+  color: var(--darker-red);
+  margin-bottom: 2.5rem; /* Mais espaço abaixo do título */
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+
+.highlightsGrid {
+  display: flex;
+  justify-content: center; /* CENTRALIZA OS CARDS HORIZONTALMENTE */
+  gap: 25px; /* AJUSTA O ESPAÇAMENTO ENTRE OS CARDS */
+  flex-wrap: wrap; /* PERMITE QUE OS CARDS QUEBREM PARA A PRÓXIMA LINHA */
+}
+
+.highlightCard {
+  background-color: var(--white);
+  padding: 2rem 1.8rem; /* Aumenta um pouco o padding interno para mais 'ar' */
+  border-radius: 12px;
+  width: calc(33.333% - 25px); /* Cada card ocupa aproximadamente 1/3 da largura, descontando o gap */
+  flex-grow: 0; /* Impede que os cards cresçam para preencher o espaço */
+  flex-shrink: 0; /* Impede que os cards encolham demais */
+  box-shadow: 0 6px 20px var(--shadow-light);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  margin-bottom: 25px; /* Adiciona margem abaixo para espaçamento consistente quando quebram */
+}
+
+.highlightCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.highlightIcon {
+  font-size: 52px; /* Aumenta um pouco o ícone */
+  color: var(--primary-red);
+  margin-bottom: 0.8rem; /* Ajusta espaçamento abaixo do ícone */
+}
+
+.highlightTitle {
+  margin-top: 0.8rem;
+  color: var(--darker-red);
+  font-weight: 700;
+  font-size: 1.4rem; /* Aumenta um pouco o título do card */
+}
+
+.highlightNumber {
+  font-size: 2.4rem; /* Aumenta o número para destaque */
+  font-weight: 700;
+  margin: 12px 0; /* Ajusta margem para espaçamento */
+  color: var(--primary-red);
+}
+
+.highlightDescription {
+  color: var(--text-medium);
+  font-size: 1rem; /* Ajusta o tamanho da fonte da descrição */
+  line-height: 1.6;
+}
+
+/* CONTATO */
+.contactSection {
+  composes: sectionContainer;
+  background-color: var(--lighter-red-background); /* Usando a variável de cor unificada */
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.contactSection .contentWrapper {
+  padding: 3rem 20px; /* Padding vertical para a seção em desktop */
+  text-align: center;
+}
+
+.contactHeading {
+  font-size: 2.2rem;
+  color: var(--darker-red);
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.contactText {
+  font-size: 1.1rem;
+  color: var(--text-bio);
+  margin-bottom: 2.5rem;
+  max-width: 600px; /* Mantém este limite para o texto */
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.contactLinks {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.contactButton {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 15px var(--shadow-red-strong);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactButton:hover {
+  background-color: var(--darker-red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(163, 0, 0, 0.4);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+  .heroBanner {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajusta as margens das seções para que não fiquem "coladas" nas laterais do celular */
+  .sectionContainer {
+    margin: 2rem 0; /* Margem superior/inferior, sem laterais */
+  }
+
+  .contentWrapper {
+    padding: 0 15px; /* Padding interno menor em telas menores */
+  }
+
+  /* Ajustes específicos para o contentWrapper dentro de cada seção em mobile */
+  .sliderSection .contentWrapper,
+  .bioSection .contentWrapper,
+  .timelineSection .contentWrapper,
+  .highlightsSection .contentWrapper,
+  .contactSection .contentWrapper {
+    padding: 2rem 15px; /* Reintroduz padding vertical para as seções em telas menores */
+  }
+
+  .heroBanner {
+    min-height: 300px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sliderImage {
+    height: 250px;
+  }
+
+  .sliderTitle {
+    font-size: 1.8rem;
+  }
+
+  .sliderSummary {
+    font-size: 1rem;
+  }
+
+  .navButton {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .prevButton {
+    left: 10px;
+  }
+
+  .nextButton {
+    right: 10px;
+  }
+
+  /* BIO SECTION RESPONSIVIDADE */
+  .bioHeadingContainer {
+    margin-bottom: 2rem;
+  }
+
+  .bioSectionTitle {
+    font-size: 2rem;
+  }
+
+  .bioFullImage {
+    width: 220px; /* Reduz a largura da imagem em telas menores */
+    height: 280px; /* Altura proporcional para mobile */
+    margin-bottom: 2rem;
+    border-radius: 12px; /* Mantém os cantos arredondados */
+  }
+
+  .bioName {
+    font-size: 2.2rem;
+  }
+
+  .bioSubtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .bioDescription {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left; /* Em mobile, alinhar à esquerda pode ser melhor que justificar */
+  }
+
+  .timelineHeading,
+  .highlightsHeading,
+  .contactHeading {
+    font-size: 1.8rem;
+  }
+
+  .timelineContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .timelineItem {
+    max-width: 95%;
+    min-width: unset;
+    margin: 0;
+  }
+
+  .timelineLine {
+    display: none;
+  }
+
+  .highlightsGrid {
+    gap: 20px;
+  }
+
+  .highlightCard {
+    width: calc(50% - 15px); /* Em telas menores, dois cards por linha */
+    margin-bottom: 20px; /* Ajusta margem para espaçamento vertical entre linhas */
+  }
+
+  .highlightNumber {
+    font-size: 1.8rem;
+  }
+
+  .contactButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Para telas muito pequenas (ex: iPhones 5/SE) */
+@media (max-width: 480px) {
+  .sliderImage {
+    height: 200px;
+  }
+
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+
+  .sliderSummary {
+    font-size: 0.9rem;
+  }
+
+  .bioSection .contentWrapper {
+    padding: 2rem 15px;
+  }
+
+  .bioSectionTitle {
+    font-size: 1.6rem;
+  }
+
+  .bioFullImage {
+    width: 180px;
+    height: 240px;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .bioName {
+    font-size: 1.8rem;
+  }
+
+  .bioSubtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bioDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .timelineHeading,
+  .highlightsHeading,
+  .contactHeading {
+    font-size: 1.6rem;
+  }
+
+  .highlightIcon {
+    font-size: 40px;
+  }
+
+  .highlightCard {
+    width: 90%; /* Em telas muito pequenas, um card por linha, com margens laterais */
+    max-width: 300px; /* Garante que não fique muito largo em telas muito estreitas */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+  }
+  .highlightsGrid {
+    gap: 15px; /* Ajusta o gap para telas menores */
+  }
+}

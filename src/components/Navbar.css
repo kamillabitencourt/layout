@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #b71c1c; /* vermelho PT */
+  background-color: #ff0038;
   padding: 10px 30px;
   position: sticky;
   top: 0;
@@ -30,7 +30,7 @@
 }
 
 .nav-links li a:hover {
-  color: #ffd700; /* amarelo para destaque */
+  color: #ffd700; 
 }
 
 @media (max-width: 768px) {

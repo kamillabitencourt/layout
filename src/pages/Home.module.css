@@ -1,0 +1,499 @@
+
+:root {
+  --primary-red: #a30000;
+  --darker-red: #730000;
+  --light-red-background: #f8f0f0; 
+  --lighter-red-background: #fce5e5; 
+  --text-dark: #222;
+  --text-medium: #444;
+  --text-light: #555;
+  --text-bio: #333;
+  --white: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-red: rgba(163, 0, 0, 0.1);
+  --shadow-red-strong: rgba(163, 0, 0, 0.3);
+}
+
+.main {
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.sectionContainer {
+  max-width: 900px;
+  margin: 3rem auto; 
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-red);
+}
+
+
+.heroBanner {
+  background-color: var(--primary-red); 
+  position: relative; 
+  padding: 0; 
+  min-height: 450px; 
+  overflow: hidden; 
+  width: 100vw; 
+  margin-left: calc(50% - 50vw); 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.heroFullWidthImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block; 
+}
+
+
+/* carrosel*/
+.sliderSection {
+  composes: sectionContainer; 
+  background-color: var(--light-red-background);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 30px var(--shadow-light); 
+  padding: 2rem; 
+}
+
+.sliderArticle {
+  padding: 1rem 1.5rem 2rem;
+  text-align: center;
+  opacity: 0; 
+  transition: opacity 0.8s ease-in-out; 
+}
+
+.sliderArticleActive {
+  opacity: 1; 
+}
+
+.sliderImage {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 15px var(--shadow-light);
+}
+
+.sliderType {
+  font-weight: 700;
+  color: var(--primary-red);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 0.9rem; 
+}
+
+.sliderTitle {
+  font-size: 2rem; 
+  margin: 0.75rem 0 0.5rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.sliderSummary {
+  font-size: 1.1rem; 
+  color: var(--text-medium);
+  max-width: 650px; 
+  margin: auto;
+  line-height: 1.6;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(163, 0, 0, 0.7); 
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  width: 44px; 
+  height: 44px; 
+  cursor: pointer;
+  font-size: 28px; 
+  opacity: 0.85;
+  transition: background-color 0.3s ease, opacity 0.3s ease; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; 
+}
+
+.navButton:hover {
+  background-color: var(--darker-red);
+  opacity: 1;
+}
+
+.prevButton {
+  left: 20px; 
+}
+
+.nextButton {
+  right: 20px; 
+}
+
+/* BIO */
+.bioSection {
+  composes: sectionContainer;
+  background-color: var(--white);
+  box-shadow: 0 8px 25px var(--shadow-red);
+  text-align: center;
+  color: var(--text-bio);
+  padding: 2.5rem 3rem; 
+}
+
+.bioImage {
+  width: 160px; 
+  height: 160px; 
+  border-radius: 50%;
+  border: 4px solid var(--primary-red); 
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.bioTitle {
+  color: var(--primary-red);
+  font-weight: 700;
+  font-size: 2rem; 
+  margin-bottom: 0.75rem;
+}
+
+.bioDescription {
+  max-width: 700px; 
+  margin: auto;
+  font-weight: 400; 
+  font-size: 1.1rem; 
+  line-height: 1.7; 
+}
+
+/* LINHA DO TEMPO */
+.timelineSection {
+  composes: sectionContainer; /* Reusa estilos base do container */
+  background-color: var(--light-red-background);
+  box-shadow: 0 4px 15px var(--shadow-light);
+  user-select: none;
+  padding: 2.5rem 1rem; 
+}
+
+.timelineHeading {
+  text-align: center;
+  font-size: 2.2rem; 
+  color: var(--darker-red);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+.timelineContainer {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  position: relative;
+  padding: 0 10px;
+  gap: 20px; 
+  flex-wrap: wrap; 
+}
+
+.timelineLine {
+  position: absolute;
+  top: 50px; 
+  left: 5%; 
+  right: 5%; 
+  height: 4px;
+  background-color: var(--primary-red);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.timelineItem {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-medium); 
+  padding: 1.5rem; 
+  text-align: center;
+  flex: 1;
+  max-width: 200px; 
+  min-width: 160px; 
+  position: relative;
+  z-index: 1;
+  margin: 0 5px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease; 
+}
+
+.timelineItem:hover {
+    transform: translateY(-5px); 
+}
+
+.timelineIcon {
+  font-size: 44px; 
+  color: var(--primary-red);
+  margin-bottom: 0.75rem;
+}
+
+.timelineYear {
+  font-weight: 700;
+  font-size: 1.1rem; 
+  color: var(--darker-red);
+  margin-bottom: 0.5rem;
+}
+
+.timelineDescription {
+  font-size: 0.95rem; 
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+/* DESTAQUES DO MANDATO */
+.highlightsSection {
+  composes: sectionContainer; 
+  background-color: var(--lighter-red-background); 
+  box-shadow: 0 8px 25px var(--shadow-red);
+  text-align: center;
+  padding: 2.5rem; 
+}
+
+.highlightsHeading {
+  color: var(--darker-red);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+
+.highlightsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.highlightCard {
+  background-color: var(--white);
+  padding: 1.8rem; 
+  border-radius: 12px;
+  width: 280px; 
+  box-shadow: 0 6px 20px var(--shadow-light); 
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  cursor: default;
+}
+
+.highlightCard:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); 
+}
+
+.highlightIcon {
+  font-size: 48px; 
+  color: var(--primary-red); 
+  margin-bottom: 0.5rem;
+}
+
+.highlightTitle {
+  margin-top: 0.75rem;
+  color: var(--darker-red); 
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.highlightNumber {
+  font-size: 2.2rem; 
+  font-weight: 700;
+  margin: 10px 0; 
+  color: var(--primary-red); 
+}
+
+.highlightDescription {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* CONTATO */
+.contactSection {
+  background-color: var(--lighter-red-background);
+  padding: 3rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-red); 
+}
+
+.contactHeading {
+  font-size: 2.2rem;
+  color: var(--darker-red);
+  margin-bottom: 1.2rem; 
+  font-weight: 700;
+}
+
+.contactText {
+  font-size: 1.1rem;
+  color: var(--text-bio);
+  margin-bottom: 2.5rem; 
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.contactLinks {
+  display: flex;
+  justify-content: center;
+  gap: 25px; 
+  flex-wrap: wrap;
+}
+
+.contactButton {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 0.9rem 2.5rem; 
+  border-radius: 8px; 
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 15px var(--shadow-red-strong);
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  font-size: 1.1rem; 
+  display: inline-flex; 
+  align-items: center;
+  gap: 8px; 
+}
+
+.contactButton:hover {
+  background-color: var(--darker-red);
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(163, 0, 0, 0.4); 
+}
+
+@media (max-width: 768px) {
+  .sectionContainer,
+  .sliderSection,
+  .bioSection,
+  .timelineSection,
+  .highlightsSection,
+  .contactSection {
+    margin: 2rem 1rem; 
+    padding: 1.5rem; 
+  }
+
+  .heroBanner {
+    min-height: 300px; 
+    margin-left: 0; 
+    width: 100%; 
+  }
+
+
+
+  .sliderImage {
+    height: 250px; 
+  }
+
+  .sliderTitle {
+    font-size: 1.8rem;
+  }
+
+  .sliderSummary {
+    font-size: 1rem;
+  }
+
+  .navButton {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .prevButton {
+    left: 10px;
+  }
+
+  .nextButton {
+    right: 10px;
+  }
+
+  .bioTitle,
+  .timelineHeading,
+  .highlightsHeading,
+  .contactHeading {
+    font-size: 1.8rem;
+  }
+
+  .bioDescription {
+    font-size: 1rem;
+  }
+
+  .timelineContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+  }
+
+  .timelineItem {
+    max-width: 95%; 
+    min-width: unset; 
+    margin: 0; 
+  }
+
+  .timelineLine {
+    display: none; 
+  }
+
+  .highlightsGrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+  }
+
+  .highlightCard {
+    width: 90%; 
+    padding: 1.2rem; 
+  }
+
+  .highlightNumber {
+    font-size: 1.8rem;
+  }
+
+  .contactButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Para telas muito pequenas (ex: iPhones 5/SE) */
+@media (max-width: 480px) {
+  /* Não há mais heroTitle, heroSubtitle nesta seção */
+
+  .sliderImage {
+    height: 200px;
+  }
+
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+
+  .sliderSummary {
+    font-size: 0.9rem;
+  }
+
+  .bioTitle,
+  .timelineHeading,
+  .highlightsHeading,
+  .contactHeading {
+    font-size: 1.6rem;
+  }
+
+  .highlightIcon {
+    font-size: 40px;
+  }
+}

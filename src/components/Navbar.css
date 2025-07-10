@@ -1,25 +1,45 @@
+/* Estilos Padrão (Desktop First) */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ff0038;
+  background-color: #ff0038; /* Vermelho forte */
   padding: 10px 30px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 80px; /* Definindo uma altura para o navbar */
 }
+
+/* Adicionado para envolver logo e links, para melhor controle do layout */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ocupa toda a largura disponível no navbar */
+  max-width: 1200px; /* Largura máxima para o conteúdo interno */
+  margin: 0 auto; /* Centraliza o container */
+}
+
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Aumentado ligeiramente para destaque */
   color: white;
   font-weight: bold;
+  /* Garante que o logo seja um flex item, importante para alinhamento */
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Se o logo for um link */
 }
 
+/* Estilos para os links de navegação no desktop */
 .nav-links {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: flex; /* Links horizontais no desktop */
+  flex-wrap: wrap; /* Permite que os links quebrem linha se não houver espaço */
+  gap: 15px; /* Espaçamento entre os links */
+  margin: 0; /* Remove margem padrão do ul */
+  padding: 0; /* Remove padding padrão do ul */
 }
 
 .nav-links li a {
@@ -27,15 +47,86 @@
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
+  padding: 5px 0; /* Adiciona um pouco de padding vertical para a área clicável */
 }
 
 .nav-links li a:hover {
-  color: #ffd700; 
+  color: #ffd700; /* Amarelo */
 }
 
-@media (max-width: 768px) {
+/* ==================================================================== */
+/* Novo estilo para o ícone de menu (Hambúrguer/X) */
+.menu-icon {
+  display: none; /* Esconde o ícone no desktop por padrão */
+  font-size: 2rem; /* Tamanho do ícone */
+  cursor: pointer;
+  color: white; /* Cor do ícone */
+}
+
+/* ==================================================================== */
+/* Media Query para Telas Menores (Mobile/Tablet) */
+@media (max-width: 960px) { /* Usando 960px como breakpoint para o menu hambúrguer */
+
+  .navbar {
+    padding: 10px 20px; /* Ajusta o padding para telas menores */
+  }
+
   .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column; /* Links empilhados verticalmente no mobile */
+    width: 100%;
+    height: 90vh; /* Ocupa quase toda a altura da tela no mobile */
+    position: absolute; /* Posiciona o menu de forma absoluta */
+    top: 80px; /* Abaixo do navbar (altura do navbar) */
+    left: -100%; /* Inicia fora da tela (escondido) */
+    opacity: 1; /* Garante visibilidade quando ativo */
+    transition: all 0.5s ease; /* Animação suave */
+    background-color: #ff0038; /* Cor de fundo do menu mobile */
+    align-items: center; /* Centraliza os itens horizontalmente no menu mobile */
+    padding: 20px 0; /* Adiciona padding vertical */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra para o menu aberto */
+  }
+
+  .nav-links.active { /* Classe adicionada via JavaScript quando o menu está aberto */
+    left: 0; /* Desliza o menu para a tela */
+    opacity: 1;
+    z-index: 1; /* Garante que o menu fique por cima de outros conteúdos */
+  }
+
+  .nav-links li {
+    width: 100%; /* Cada item ocupa a largura total do menu mobile */
+    height: auto; /* Altura automática para itens */
+    margin: 1rem 0; /* Espaçamento entre os itens na vertical */
+  }
+
+  .nav-links li a {
+    text-align: center;
+    padding: 1rem; /* Aumenta a área clicável */
+    width: 100%;
+    display: block; /* Ocupa todo o espaço para ser mais fácil de clicar */
+    font-size: 1.3rem; /* Aumenta a fonte no menu mobile */
+  }
+
+  .nav-links li a:hover {
+    color: #ffd700;
+    transform: none; /* Remove a translação no hover para mobile, se houver */
+  }
+
+  /* Mostra o ícone de menu em telas menores */
+  .menu-icon {
+    display: block; /* Torna o ícone visível no mobile */
+  }
+}
+
+/* Ajustes finos para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+  .navbar .logo {
+    font-size: 1.5rem; /* Ajusta o tamanho do logo para telas menores */
+  }
+  .menu-icon {
+    font-size: 1.8rem; /* Ajusta o tamanho do ícone */
+  }
+  .navbar {
+    padding: 10px 15px; /* Mais compacto em telas muito pequenas */
   }
 }

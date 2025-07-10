@@ -1,6 +1,6 @@
 /* Estilos globais e variáveis */
 :root {
-  --primary-red: #a30000;
+  --primary-red: #ff0038;
   --darker-red: #730000;
   --light-red-background: #f8f0f0;
   --lighter-red-background: #fffafa; /* Cor de fundo suave para Destaques e Contato */
@@ -429,136 +429,14 @@
   box-shadow: 0 8px 20px rgba(163, 0, 0, 0.4);
 }
 
-/* ==================================================================== */
-/* Estilos Específicos do Navbar para Desktop */
-/* Estes devem vir ANTES da media query para garantir que são a base */
-
-/* Adicionado para envolver logo e links, para melhor controle do layout */
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* Ocupa toda a largura disponível no navbar */
-  max-width: 1200px; /* Largura máxima para o conteúdo interno */
-  margin: 0 auto; /* Centraliza o container */
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+  .heroBanner {
+    min-height: 350px;
+  }
 }
 
-.navbar .logo {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  /* margin-right: auto; // Opcional: empurra o menu para a direita */
-}
-
-/* Menu de Navegação - Desktop */
-.nav-links {
-  list-style: none;
-  display: flex; /* FLEX: Links horizontais */
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-  padding: 5px 0;
-  white-space: nowrap; /* Evita que o texto quebre linha nos links */
-}
-
-.nav-links li a:hover {
-  color: #ffd700;
-}
-
-/* Ícone do Menu Hambúrguer - Escondido no Desktop */
-.menu-icon {
-  display: none; /* ESCONDE O ÍCONE NO DESKTOP */
-  font-size: 2rem;
-  cursor: pointer;
-  color: white;
-}
-
-/* ==================================================================== */
-/* Media Query para Telas Menores (Mobile/Tablet) */
-@media (max-width: 768px) { /* Breakpoint do menu hambúrguer */
-
-  .navbar {
-    padding: 10px 20px;
-  }
-
-  /* Faz a lista de links se comportar como um menu mobile */
-  .nav-links {
-    display: flex;
-    flex-direction: column; /* Links empilhados verticalmente */
-    width: 100%;
-    height: auto; /* Altura se ajusta ao conteúdo */
-    position: absolute; /* Posiciona o menu de forma absoluta */
-    top: 80px; /* Abaixo do navbar */
-    left: -100%; /* <<<<<<<<<<< ISSO AQUI ESCONDE O MENU INICIALMENTE */
-    opacity: 1; /* Transparente, mas será totalmente visível quando ativo */
-    transition: all 0.5s ease; /* Animação ao abrir/fechar */
-    background-color: #ff0038; /* Cor de fundo do menu mobile */
-    align-items: center; /* Centraliza os itens no menu mobile */
-    padding: 20px 0; /* Padding vertical */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    gap: 0; /* Remove o gap entre os itens para controlar com padding */
-  }
-
-  /* Classe para quando o menu está ativo (aberto) */
-  .nav-links.active {
-    left: 0; /* <<<<<<<<<<< ISSO AQUI TRAZ O MENU PARA A TELA */
-    opacity: 1;
-    z-index: 1; /* Garante que o menu fique por cima */
-    overflow-y: auto; /* Habilita rolagem se o conteúdo for maior que a tela */
-    max-height: calc(100vh - 80px); /* Limita a altura para não ultrapassar a tela */
-  }
-
-  /* Estilos para cada item de lista no menu mobile */
-  .nav-links li {
-    width: 100%; /* Cada item ocupa a largura total do menu mobile */
-    height: auto;
-    margin: 0; /* Remove margens extras */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador visual */
-  }
-  .nav-links li:last-child {
-    border-bottom: none; /* Remove separador do último item */
-  }
-
-  /* Estilos para os links dentro do menu mobile */
-  .nav-links li a {
-    text-align: center;
-    padding: 1.2rem 1rem; /* Aumenta o padding para mais espaço */
-    width: 100%;
-    display: block; /* Faz o link ocupar todo o espaço do li */
-    font-size: 1.1rem; /* Reduz um pouco a fonte para caber */
-    color: white; /* Garante a cor branca no mobile */
-  }
-
-  .nav-links li a:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Efeito de hover no mobile */
-    color: #ffd700;
-    transform: none;
-  }
-
-  /* Ícone do Menu Hambúrguer - Visível no Mobile */
-  .menu-icon {
-    display: block; /* <<<<<<<<<<< ISSO AQUI MOSTRA O ÍCONE NO MOBILE */
-    position: absolute; /* Para posicioná-lo no canto */
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-  }
-
-  /* Outras Media Queries para 768px (mantidas do seu código original) */
-  /* ... (restante do seu CSS para 768px continua aqui) ... */
-
+@media (max-width: 768px) {
   /* Ajusta as margens das seções para que não fiquem "coladas" nas laterais do celular */
   .sectionContainer {
     margin: 2rem 0; /* Margem superior/inferior, sem laterais */

@@ -1,0 +1,62 @@
+/* src/admin/Settings.css */
+
+.settings-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.settings-container h3 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.setting-group {
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.setting-group h4 {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.setting-group input[type="text"],
+.setting-group input[type="email"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.save-settings-button {
+  background-color: #007bff; /*azul pro checkkkk*/
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.save-settings-button:hover {
+  background-color: #0056b3;
+}

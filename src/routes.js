@@ -1,3 +1,4 @@
+// src/routes.js
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Fotografias from "./pages/Fotografias";
@@ -8,6 +9,7 @@ import Artigos from "./pages/Artigos";
 import Downloads from "./pages/Downloads";
 import Contatos from "./pages/Contatos";
 import Webmail from "./pages/Webmail";
+// Não importe LoginPage, ForgotPasswordPage, ResetPasswordPage ou Dashboard aqui.
 
 export default function AppRoutes() {
     return (
@@ -21,6 +23,7 @@ export default function AppRoutes() {
             <Route path="/downloads" element={<Downloads />} />
             <Route path="/contatos" element={<Contatos />} />
             <Route path="/webmail" element={<Webmail />} />
+            {/* Adicione outras rotas do site principal aqui */}
         </Routes>
     );
 }

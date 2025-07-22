@@ -1,0 +1,171 @@
+.user-control-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-control-container h3 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.add-user-section {
+  margin-bottom: 40px;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.add-user-section h4 {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+}
+
+.add-user-section form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 15px;
+  align-items: center;
+}
+
+.add-user-section input[type="text"],
+.add-user-section input[type="email"],
+.add-user-section input[type="password"],
+.add-user-section select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+.permissions-checkbox-group {
+    grid-column: 1 / -1; 
+    margin-top: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.permissions-checkbox-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.permission-item {
+    display: inline-flex; 
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.permission-item input[type="checkbox"] {
+    margin-right: 5px;
+    width: auto; 
+}
+
+
+.add-user-section button {
+  background-color: #28a745; 
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  width: auto; 
+}
+
+.add-user-section button:hover {
+  background-color: #218838;
+}
+
+
+.user-list-section h4 {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+}
+
+.user-list-section table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-top: 15px;
+}
+
+.user-list-section th,
+.user-list-section td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  vertical-align: top; 
+}
+
+.user-list-section th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-list-section tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-list-section select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.user-permissions-display {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.user-permissions-display .permission-item {
+    margin-right: 0; 
+    margin-bottom: 0; 
+    white-space: nowrap; 
+}
+
+.delete-button {
+  background-color: #dc3545; 
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
